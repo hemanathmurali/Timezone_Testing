@@ -5,6 +5,7 @@ public interface Constants {
 
     // Operators
     public static String[] normalOperators = {"IS_ON", "DAY_IS", "IN_THE_LAST", "IN_THE_NEXT", "NOT_IN_THE_LAST", "NOT_IN_THE_NEXT", "AFTER", "BEFORE", "SINCE", "IS_BETWEEN"};
+    public static String[] unresolvedOperators = {"IS_ON", "IN_THE_LAST", "IN_THE_NEXT", "SINCE", "IS_BETWEEN"};
 
     // app Name
     public static final String APP_NAME = "freshservice";
@@ -59,6 +60,9 @@ public interface Constants {
     public static final String TIMESTAMP_ONLY = "TIMESTAMP_ONLY";
     public static final String RESOLVED_TICKETS = "RESOLVED_TICKETS";
     public static final String IMPROVEMENT_QUERY = "improvementQuery";
+    public static final String UNRESOLVED_TICKETS = "UNRESOLVED_TICKETS";
+    public static final String TOTAL_QUERY = "TOTAL_QUERY";
+    public static final String IMPROV_QUERY = "IMPROV_QUERY";
 
     // final URL's
     public static final String WITH_TZ_URL = WITH_TIMEZONE_URL + "api/reportgroups/" + WITH_TIMEZONE_NORMAL_REPORTGROUP + "/reports/" + WITH_TIMEZONE_NORMAL_REPORT + "/modify?limit=100&offset=0&pageIndex=0";

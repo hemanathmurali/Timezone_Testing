@@ -31,10 +31,11 @@ public class Main {
         // filterValues
         JSONObject filterValues = jsonFileReader("src/main/resources/filter/filter_values.json");
 
-        String flowType = RESOLVED_TICKETS;
-        JSONObject reportObj = jsonFileReader("src/main/resources/reportGroup/resolved_tickets.json");
+        String flowType = UNRESOLVED_TICKETS;
+        JSONObject reportObj = jsonFileReader("src/main/resources/reportGroup/unresolved_tickets.json");
 
         Map<String, List<Map<String, Map<String, String>>>> queries = new HashMap<>();
+
 
         if (flowType.equals(NORMAL) || flowType.equals(RESOLVED_TICKETS)) {
             for (String key : normalOperators) {
@@ -119,7 +120,89 @@ public class Main {
                 }
             }
         }
-        writeJsonToFile("src/main/resources/output/output.json", queries);
+
+        Map<String, List<Map<String, Map<String, JSONObject>>>> unresolvedTickets = new HashMap<>();
+
+        if (flowType.equals(UNRESOLVED_TICKETS)) {
+
+            for (String key : unresolvedOperators) {
+
+                System.out.println("***************" + key + "********************");
+
+                JSONObject currConfig = filterConfig.getJSONObject(key);
+                JSONArray operators = !key.equals(unresolvedOperators[4]) ? currConfig.getJSONArray(KEYS) : null;
+                JSONObject filterValue = currConfig.getJSONObject(CONFIG);
+
+                List<Map<String, Map<String, JSONObject>>> listOfQueries = new ArrayList<>();
+
+                if (key.equals(unresolvedOperators[0]) || key.equals(unresolvedOperators[3])) {
+
+                    for (int i = 0; i < operators.length(); i++) {
+                        JSONObject filtersMap = getNormalMetricFiltersMap(reportObj);
+                        filtersMap.put(OPERATOR, key);
+                        filterValue.put(VALUE, operators.getString(i));
+                        filtersMap.put(FILTER_VALUE, filterValue);
+                        setNormalMetricFiltersMap(reportObj, filtersMap, filterValue);
+                        String withTZ = makeApiCall(reportObj, YES, flowType);
+                        String WithoutTZ = makeApiCall(reportObj, NO, flowType);
+                        listOfQueries.add(constructFinalMapForUnresolved(getMapWithQueries(new JSONObject(withTZ), new JSONObject(WithoutTZ)), operators.getString(i)));
+                    }
+
+                    unresolvedTickets.put(key, listOfQueries);
+                }
+
+                if (key.equals(unresolvedOperators[1]) || key.equals(unresolvedOperators[2])) {
+
+                    for (int i = 0; i < operators.length(); i++) {
+
+                        JSONObject filtersMap = getNormalMetricFiltersMap(reportObj);
+                        filtersMap.put(OPERATOR, key);
+                        filterValue.put(VALUE, filterValues.getJSONObject(key).getString(operators.getString(i)));
+                        filterValue.put(UNIT, operators.getString(i));
+                        setNormalMetricFiltersMap(reportObj, filtersMap, filterValue);
+                        String withTZ = makeApiCall(reportObj, YES, flowType);
+                        String WithoutTZ = makeApiCall(reportObj, NO, flowType);
+                        listOfQueries.add(constructFinalMapForUnresolved(getMapWithQueries(new JSONObject(withTZ), new JSONObject(WithoutTZ)), operators.getString(i)));
+                    }
+
+                    unresolvedTickets.put(key, listOfQueries);
+                }
+
+                if (key.equals(unresolvedOperators[3])) {
+
+                    JSONObject splConfig = currConfig.getJSONObject(TYPE2).getJSONObject(CONFIG);
+
+                    JSONObject filtersMap = getNormalMetricFiltersMap(reportObj);
+                    filtersMap.put(OPERATOR, key);
+                    splConfig.put(VALUE, filterValues.getString(key));
+                    setNormalMetricFiltersMap(reportObj, filtersMap, splConfig);
+                    String withTZ = makeApiCall(reportObj, YES, flowType);
+                    String WithoutTZ = makeApiCall(reportObj, NO, flowType);
+                    listOfQueries.add(constructFinalMapForUnresolved(getMapWithQueries(new JSONObject(withTZ), new JSONObject(WithoutTZ)), TIMESTAMP_ONLY));
+                    unresolvedTickets.put(key, listOfQueries);
+                }
+
+
+                if (key.equals(unresolvedOperators[4])) {
+                    JSONObject filtersMap = getNormalMetricFiltersMap(reportObj);
+                    filtersMap.put(OPERATOR, key);
+                    filterValue.put(FROM_VALUE, filterValues.getString(IS_BETWEEN_FROM_DATE));
+                    filterValue.put(TO_VALUE, filterValues.getString(IS_BETWEEN_TO_DATE));
+                    setNormalMetricFiltersMap(reportObj, filtersMap, filterValue);
+                    String withTZ = makeApiCall(reportObj, YES, flowType);
+                    String WithoutTZ = makeApiCall(reportObj, NO, flowType);
+                    listOfQueries.add(constructFinalMapForUnresolved(getMapWithQueries(new JSONObject(withTZ), new JSONObject(WithoutTZ)), TIMESTAMP_ONLY));
+                    unresolvedTickets.put(key, listOfQueries);
+                }
+
+            }
+        }
+
+        if (!flowType.equals(UNRESOLVED_TICKETS)) {
+            writeJsonToFile("src/main/resources/output/output.json", new JSONObject(queries));
+        } else {
+            writeJsonToFile("src/main/resources/output/output.json", new JSONObject(unresolvedTickets));
+        }
     }
 
     // api call method which will return the query
@@ -159,6 +242,20 @@ public class Main {
                     String label = obj.getJSONArray(METRIC).getJSONObject(0).getString(LABEL);
                     return res.getJSONObject(RESPONSE).getJSONObject(METRIC_QURIES).getJSONObject(label).getJSONObject(IMPROVEMENT_QUERY).getString(QUERY);
                 }
+
+                if (flowType.equals(UNRESOLVED_TICKETS)) {
+                    String label = obj.getJSONArray(METRIC).getJSONObject(0).getString(LABEL);
+                    String totalQuery = res.getJSONObject(RESPONSE).getJSONObject(METRIC_QURIES).getJSONObject(label).getString(QUERY);
+                    String improvQuery = res.getJSONObject(RESPONSE).getJSONObject(METRIC_QURIES).getJSONObject(label).getJSONObject(IMPROVEMENT_QUERY).getString(QUERY);
+
+                    Map<String, String> map = new HashMap<>();
+                    map.put(TOTAL_QUERY, totalQuery);
+                    map.put(IMPROV_QUERY, improvQuery);
+
+                    return new JSONObject(map).toString();
+
+                }
+
             } else {
                 throw new Exception(response.body());
             }
@@ -204,6 +301,16 @@ public class Main {
         return map;
     }
 
+    // this is overloading of the above method
+
+    private static Map<String, JSONObject> getMapWithQueries(JSONObject withTZ, JSONObject withoutTZ) {
+
+        Map<String, JSONObject> map = new HashMap<>();
+        map.put(WITHTZ, withTZ);
+        map.put(WIHTOUTTZ, withoutTZ);
+        return map;
+    }
+
     // this method is to get the map with operator
     private static Map<String, Map<String, String>> constructFinalMap(Map<String, String> map, String operator) {
 
@@ -214,8 +321,18 @@ public class Main {
 
     }
 
+    // this method is overloading of above method
+    private static Map<String, Map<String, JSONObject>> constructFinalMapForUnresolved(Map<String, JSONObject> map, String operator) {
+
+        Map<String, Map<String, JSONObject>> finalMap = new HashMap<>();
+        finalMap.put(operator, map);
+
+        return finalMap;
+
+    }
+
     // to write it in json file
-    private static void writeJsonToFile(String filePath, Map<String, List<Map<String, Map<String, String>>>> queries) {
+    private static void writeJsonToFile(String filePath, JSONObject queries) {
         File file = new File(filePath);
 
         // Delete the file if it exists
@@ -225,8 +342,7 @@ public class Main {
 
         try {
             FileWriter fileWriter = new FileWriter(file);
-            JSONObject jsonObject = new JSONObject(queries);
-            fileWriter.write(jsonObject.toString());
+            fileWriter.write(queries.toString());
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
