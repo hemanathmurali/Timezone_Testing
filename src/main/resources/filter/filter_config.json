@@ -1,0 +1,183 @@
+{
+  "IS_ON": {
+    "keys": [
+      "YESTERDAY",
+      "TODAY",
+      "THIS_WEEK",
+      "LAST_WEEK",
+      "THIS_MONTH",
+      "LAST_MONTH",
+      "THIS_QUARTER",
+      "LAST_QUARTER",
+      "THIS_YEAR",
+      "LAST_YEAR"
+    ],
+    "config": {
+      "type": "DATEDURATION",
+      "value": "$_VALUE"
+    }
+  },
+  "DAY_IS": {
+    "keys": [
+      "SUNDAY",
+      "MONDAY",
+      "TUESDAY",
+      "WEDNESDAY",
+      "THURSDAY",
+      "FRIDAY",
+      "SATURDAY"
+    ],
+    "config": {
+      "type": "LIST",
+      "value": [
+        "$_VALUE"
+      ],
+      "translatedLabel": [
+        "$_VALUE"
+      ]
+    }
+  },
+  "AFTER": {
+    "keys": [
+      "YESTERDAY",
+      "TODAY",
+      "THIS_WEEK",
+      "LAST_WEEK",
+      "THIS_MONTH",
+      "LAST_MONTH",
+      "THIS_QUARTER",
+      "LAST_QUARTER",
+      "THIS_YEAR",
+      "LAST_YEAR"
+    ],
+    "config": {
+      "type": "DATEDURATION",
+      "value": "$_VALUE"
+    },
+    "type2": {
+      "config": {
+        "type": "DATE",
+        "value": "$_VALUE"
+      }
+    }
+  },
+  "BEFORE": {
+    "keys": [
+      "YESTERDAY",
+      "TODAY",
+      "THIS_WEEK",
+      "LAST_WEEK",
+      "THIS_MONTH",
+      "LAST_MONTH",
+      "THIS_QUARTER",
+      "LAST_QUARTER",
+      "THIS_YEAR",
+      "LAST_YEAR"
+    ],
+    "config": {
+      "type": "DATEDURATION",
+      "value": "$_VALUE"
+    },
+    "type2": {
+      "config": {
+        "type": "DATE",
+        "value": "$_VALUE"
+      }
+    }
+  },
+  "SINCE": {
+    "keys": [
+      "YESTERDAY",
+      "TODAY",
+      "THIS_WEEK",
+      "LAST_WEEK",
+      "THIS_MONTH",
+      "LAST_MONTH",
+      "THIS_QUARTER",
+      "LAST_QUARTER",
+      "THIS_YEAR",
+      "LAST_YEAR"
+    ],
+    "config": {
+      "type": "DATEDURATION",
+      "value": "$_VALUE"
+    },
+    "type2": {
+      "config": {
+        "type": "DATE",
+        "value": "$_VALUE"
+      }
+    }
+  },
+  "IN_THE_LAST": {
+    "keys": [
+      "SECONDS",
+      "MINUTES",
+      "HOURS",
+      "DAYS",
+      "WEEKS",
+      "MONTHS",
+      "YEARS"
+    ],
+    "config": {
+      "type": "TIMEDURATION",
+      "value": "$_VALUE",
+      "unit": "$_OPERATOR"
+    }
+  },
+  "IN_THE_NEXT": {
+    "keys": [
+      "SECONDS",
+      "MINUTES",
+      "HOURS",
+      "DAYS",
+      "WEEKS",
+      "MONTHS",
+      "YEARS"
+    ],
+    "config": {
+      "type": "TIMEDURATION",
+      "value": "$_VALUE",
+      "unit": "$_OPERATOR"
+    }
+  },
+  "NOT_IN_THE_LAST": {
+    "keys": [
+      "SECONDS",
+      "MINUTES",
+      "HOURS",
+      "DAYS",
+      "WEEKS",
+      "MONTHS",
+      "YEARS"
+    ],
+    "config": {
+      "type": "TIMEDURATION",
+      "value": "$_VALUE",
+      "unit": "$_OPERATOR"
+    }
+  },
+  "NOT_IN_THE_NEXT": {
+    "keys": [
+      "SECONDS",
+      "MINUTES",
+      "HOURS",
+      "DAYS",
+      "WEEKS",
+      "MONTHS",
+      "YEARS"
+    ],
+    "config": {
+      "type": "TIMEDURATION",
+      "value": "$_VALUE",
+      "unit": "$_OPERATOR"
+    }
+  },
+  "IS_BETWEEN": {
+    "config": {
+      "type": "RANGE",
+      "fromValue": "$FROM_VALUE",
+      "toValue": "$TO_VALUE"
+    }
+  }
+}
