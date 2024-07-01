@@ -26,13 +26,18 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         // filter configs
-        JSONObject filterConfig = jsonFileReader("src/main/resources/filter/filter_config.json");
+        JSONObject filterConfig = jsonFileReader(CONFIG_JSON);
 
         // filterValues
-        JSONObject filterValues = jsonFileReader("src/main/resources/filter/filter_values.json");
+        JSONObject filterValues = jsonFileReader(FILTER_VALUES);
 
+        // report obj
+        JSONObject withTZReportObj = jsonFileReader(WITH_TZ_REPORT_GROUP_OBJ);
+
+        JSONObject withoutTZReportObj = jsonFileReader(WITHOUT_TZ_REPORT_GROUP_OBJ);
+
+        // define the flow type
         String flowType = UNRESOLVED_TICKETS;
-        JSONObject reportObj = jsonFileReader("src/main/resources/reportGroup/unresolved_tickets.json");
 
         Map<String, List<Map<String, Map<String, String>>>> queries = new HashMap<>();
 
@@ -51,13 +56,23 @@ public class Main {
                 if (key.equals(normalOperators[0]) || key.equals(normalOperators[6]) || key.equals(normalOperators[7]) || key.equals(normalOperators[8])) {
 
                     for (int i = 0; i < operators.length(); i++) {
-                        JSONObject filtersMap = getNormalMetricFiltersMap(reportObj);
-                        filtersMap.put(OPERATOR, key);
+
                         filterValue.put(VALUE, operators.getString(i));
-                        filtersMap.put(FILTER_VALUE, filterValue);
-                        setNormalMetricFiltersMap(reportObj, filtersMap, filterValue);
-                        String withTZ = makeApiCall(reportObj, YES, flowType);
-                        String WithoutTZ = makeApiCall(reportObj, NO, flowType);
+
+                        // WITH_TZ
+                        JSONObject withTzFiltersMap = getNormalMetricFiltersMap(withTZReportObj);
+                        withTzFiltersMap.put(OPERATOR, key);
+                        withTzFiltersMap.put(FILTER_VALUE, filterValue);
+                        setMetricFiltersMap(withTZReportObj, withTzFiltersMap, filterValue);
+
+                        // WITHOUT_TZ
+                        JSONObject withoutTzFiltersMap = getNormalMetricFiltersMap(withoutTZReportObj);
+                        withoutTzFiltersMap.put(OPERATOR, key);
+                        withoutTzFiltersMap.put(FILTER_VALUE, filterValue);
+                        setMetricFiltersMap(withoutTzFiltersMap, withoutTzFiltersMap, filterValue);
+
+                        String withTZ = makeApiCall(withTZReportObj, YES, flowType);
+                        String WithoutTZ = makeApiCall(withoutTZReportObj, NO, flowType);
                         listOfQueries.add(constructFinalMap(getMapWithQueries(withTZ, WithoutTZ), operators.getString(i)));
                     }
 
@@ -65,13 +80,22 @@ public class Main {
                 }
 
                 if (key.equals(normalOperators[1])) {
-                    JSONObject filtersMap = getNormalMetricFiltersMap(reportObj);
-                    filtersMap.put(OPERATOR, key);
+
                     filterValue.put(VALUE, operators);
                     filterValue.put(TRANSLATED_LABEL, operators);
-                    setNormalMetricFiltersMap(reportObj, filtersMap, filterValue);
-                    String withTZ = makeApiCall(reportObj, YES, flowType);
-                    String WithoutTZ = makeApiCall(reportObj, NO, flowType);
+
+                    // WITH_TZ
+                    JSONObject withTzFiltersMap = getNormalMetricFiltersMap(withTZReportObj);
+                    withTzFiltersMap.put(OPERATOR, key);
+                    setMetricFiltersMap(withTZReportObj, withTzFiltersMap, filterValue);
+
+                    // WITHOUT_TZ
+                    JSONObject withoutTzFiltersMap = getNormalMetricFiltersMap(withoutTZReportObj);
+                    withoutTzFiltersMap.put(OPERATOR, key);
+                    setMetricFiltersMap(withoutTZReportObj, withoutTzFiltersMap, filterValue);
+
+                    String withTZ = makeApiCall(withTZReportObj, YES, flowType);
+                    String WithoutTZ = makeApiCall(withoutTZReportObj, NO, flowType);
                     listOfQueries.add(constructFinalMap(getMapWithQueries(withTZ, WithoutTZ), operators.toString()));
                     queries.put(key, listOfQueries);
                 }
@@ -80,13 +104,21 @@ public class Main {
 
                     for (int i = 0; i < operators.length(); i++) {
 
-                        JSONObject filtersMap = getNormalMetricFiltersMap(reportObj);
-                        filtersMap.put(OPERATOR, key);
                         filterValue.put(VALUE, filterValues.getJSONObject(key).getString(operators.getString(i)));
                         filterValue.put(UNIT, operators.getString(i));
-                        setNormalMetricFiltersMap(reportObj, filtersMap, filterValue);
-                        String withTZ = makeApiCall(reportObj, YES, flowType);
-                        String WithoutTZ = makeApiCall(reportObj, NO, flowType);
+
+                        // WITH_TZ
+                        JSONObject withTzFiltersMap = getNormalMetricFiltersMap(withTZReportObj);
+                        withTzFiltersMap.put(OPERATOR, key);
+                        setMetricFiltersMap(withTZReportObj, withTzFiltersMap, filterValue);
+
+                        // WITHOUT_TZ
+                        JSONObject withoutTzFiltersMap = getNormalMetricFiltersMap(withoutTZReportObj);
+                        withoutTzFiltersMap.put(OPERATOR, key);
+                        setMetricFiltersMap(withoutTZReportObj, withoutTzFiltersMap, filterValue);
+
+                        String withTZ = makeApiCall(withTZReportObj, YES, flowType);
+                        String WithoutTZ = makeApiCall(withoutTZReportObj, NO, flowType);
                         listOfQueries.add(constructFinalMap(getMapWithQueries(withTZ, WithoutTZ), operators.getString(i)));
                     }
 
@@ -96,25 +128,42 @@ public class Main {
                 if (key.equals(normalOperators[6]) || key.equals(normalOperators[7]) || key.equals(normalOperators[8])) {
 
                     JSONObject splConfig = currConfig.getJSONObject(TYPE2).getJSONObject(CONFIG);
-
-                    JSONObject filtersMap = getNormalMetricFiltersMap(reportObj);
-                    filtersMap.put(OPERATOR, key);
                     splConfig.put(VALUE, filterValues.getString(key));
-                    setNormalMetricFiltersMap(reportObj, filtersMap, splConfig);
-                    String withTZ = makeApiCall(reportObj, YES, flowType);
-                    String WithoutTZ = makeApiCall(reportObj, NO, flowType);
+
+                    // WITH_TZ
+                    JSONObject withTzFiltersMap = getNormalMetricFiltersMap(withTZReportObj);
+                    withTzFiltersMap.put(OPERATOR, key);
+                    setMetricFiltersMap(withTZReportObj, withTzFiltersMap, splConfig);
+
+                    // WITHOUT_TZ
+                    JSONObject withoutTzFiltersMap = getNormalMetricFiltersMap(withoutTZReportObj);
+                    withoutTzFiltersMap.put(OPERATOR, key);
+                    setMetricFiltersMap(withoutTZReportObj, withoutTzFiltersMap, splConfig);
+
+                    String withTZ = makeApiCall(withTZReportObj, YES, flowType);
+                    String WithoutTZ = makeApiCall(withoutTZReportObj, NO, flowType);
                     listOfQueries.add(constructFinalMap(getMapWithQueries(withTZ, WithoutTZ), TIMESTAMP_ONLY));
                     queries.put(key, listOfQueries);
                 }
 
                 if (key.equals(normalOperators[9])) {
-                    JSONObject filtersMap = getNormalMetricFiltersMap(reportObj);
-                    filtersMap.put(OPERATOR, key);
+
                     filterValue.put(FROM_VALUE, filterValues.getString(IS_BETWEEN_FROM_DATE));
                     filterValue.put(TO_VALUE, filterValues.getString(IS_BETWEEN_TO_DATE));
-                    setNormalMetricFiltersMap(reportObj, filtersMap, filterValue);
-                    String withTZ = makeApiCall(reportObj, YES, flowType);
-                    String WithoutTZ = makeApiCall(reportObj, NO, flowType);
+
+                    // WITH_TZ
+                    JSONObject withTzFiltersMap = getNormalMetricFiltersMap(withTZReportObj);
+                    withTzFiltersMap.put(OPERATOR, key);
+                    setMetricFiltersMap(withTZReportObj, withTzFiltersMap, filterValue);
+
+                    // WITHOUT_TZ
+                    JSONObject withoutTzFiltersMap = getNormalMetricFiltersMap(withoutTZReportObj);
+                    withoutTzFiltersMap.put(OPERATOR, key);
+                    setMetricFiltersMap(withoutTZReportObj, withoutTzFiltersMap, filterValue);
+
+
+                    String withTZ = makeApiCall(withTZReportObj, YES, flowType);
+                    String WithoutTZ = makeApiCall(withoutTZReportObj, NO, flowType);
                     listOfQueries.add(constructFinalMap(getMapWithQueries(withTZ, WithoutTZ), TIMESTAMP_ONLY));
                     queries.put(key, listOfQueries);
                 }
@@ -138,13 +187,22 @@ public class Main {
                 if (key.equals(unresolvedOperators[0]) || key.equals(unresolvedOperators[3])) {
 
                     for (int i = 0; i < operators.length(); i++) {
-                        JSONObject filtersMap = getNormalMetricFiltersMap(reportObj);
-                        filtersMap.put(OPERATOR, key);
                         filterValue.put(VALUE, operators.getString(i));
-                        filtersMap.put(FILTER_VALUE, filterValue);
-                        setNormalMetricFiltersMap(reportObj, filtersMap, filterValue);
-                        String withTZ = makeApiCall(reportObj, YES, flowType);
-                        String WithoutTZ = makeApiCall(reportObj, NO, flowType);
+
+                        // WITH_TZ
+                        JSONObject withTzFiltersMap = getNormalMetricFiltersMap(withTZReportObj);
+                        withTzFiltersMap.put(OPERATOR, key);
+                        withTzFiltersMap.put(FILTER_VALUE, filterValue);
+                        setMetricFiltersMap(withTZReportObj, withTzFiltersMap, filterValue);
+
+                        // WITHOUT_TZ
+                        JSONObject withoutTzFiltersMap = getNormalMetricFiltersMap(withoutTZReportObj);
+                        withoutTzFiltersMap.put(OPERATOR, key);
+                        withoutTzFiltersMap.put(FILTER_VALUE, filterValue);
+                        setMetricFiltersMap(withoutTzFiltersMap, withoutTzFiltersMap, filterValue);
+
+                        String withTZ = makeApiCall(withTZReportObj, YES, flowType);
+                        String WithoutTZ = makeApiCall(withoutTZReportObj, NO, flowType);
                         listOfQueries.add(constructFinalMapForUnresolved(getMapWithQueries(new JSONObject(withTZ), new JSONObject(WithoutTZ)), operators.getString(i)));
                     }
 
@@ -155,13 +213,21 @@ public class Main {
 
                     for (int i = 0; i < operators.length(); i++) {
 
-                        JSONObject filtersMap = getNormalMetricFiltersMap(reportObj);
-                        filtersMap.put(OPERATOR, key);
                         filterValue.put(VALUE, filterValues.getJSONObject(key).getString(operators.getString(i)));
                         filterValue.put(UNIT, operators.getString(i));
-                        setNormalMetricFiltersMap(reportObj, filtersMap, filterValue);
-                        String withTZ = makeApiCall(reportObj, YES, flowType);
-                        String WithoutTZ = makeApiCall(reportObj, NO, flowType);
+
+                        // WITH_TZ
+                        JSONObject withTzFiltersMap = getNormalMetricFiltersMap(withTZReportObj);
+                        withTzFiltersMap.put(OPERATOR, key);
+                        setMetricFiltersMap(withTZReportObj, withTzFiltersMap, filterValue);
+
+                        // WITHOUT_TZ
+                        JSONObject withoutTzFiltersMap = getNormalMetricFiltersMap(withoutTZReportObj);
+                        withoutTzFiltersMap.put(OPERATOR, key);
+                        setMetricFiltersMap(withoutTZReportObj, withoutTzFiltersMap, filterValue);
+
+                        String withTZ = makeApiCall(withTZReportObj, YES, flowType);
+                        String WithoutTZ = makeApiCall(withoutTZReportObj, NO, flowType);
                         listOfQueries.add(constructFinalMapForUnresolved(getMapWithQueries(new JSONObject(withTZ), new JSONObject(WithoutTZ)), operators.getString(i)));
                     }
 
@@ -171,26 +237,42 @@ public class Main {
                 if (key.equals(unresolvedOperators[3])) {
 
                     JSONObject splConfig = currConfig.getJSONObject(TYPE2).getJSONObject(CONFIG);
-
-                    JSONObject filtersMap = getNormalMetricFiltersMap(reportObj);
-                    filtersMap.put(OPERATOR, key);
                     splConfig.put(VALUE, filterValues.getString(key));
-                    setNormalMetricFiltersMap(reportObj, filtersMap, splConfig);
-                    String withTZ = makeApiCall(reportObj, YES, flowType);
-                    String WithoutTZ = makeApiCall(reportObj, NO, flowType);
+
+                    // WITH_TZ
+                    JSONObject withTzFiltersMap = getNormalMetricFiltersMap(withTZReportObj);
+                    withTzFiltersMap.put(OPERATOR, key);
+                    setMetricFiltersMap(withTZReportObj, withTzFiltersMap, splConfig);
+
+                    // WITHOUT_TZ
+                    JSONObject withoutTzFiltersMap = getNormalMetricFiltersMap(withoutTZReportObj);
+                    withoutTzFiltersMap.put(OPERATOR, key);
+                    setMetricFiltersMap(withoutTZReportObj, withoutTzFiltersMap, splConfig);
+
+                    String withTZ = makeApiCall(withTZReportObj, YES, flowType);
+                    String WithoutTZ = makeApiCall(withoutTZReportObj, NO, flowType);
                     listOfQueries.add(constructFinalMapForUnresolved(getMapWithQueries(new JSONObject(withTZ), new JSONObject(WithoutTZ)), TIMESTAMP_ONLY));
                     unresolvedTickets.put(key, listOfQueries);
                 }
 
 
                 if (key.equals(unresolvedOperators[4])) {
-                    JSONObject filtersMap = getNormalMetricFiltersMap(reportObj);
-                    filtersMap.put(OPERATOR, key);
+
                     filterValue.put(FROM_VALUE, filterValues.getString(IS_BETWEEN_FROM_DATE));
                     filterValue.put(TO_VALUE, filterValues.getString(IS_BETWEEN_TO_DATE));
-                    setNormalMetricFiltersMap(reportObj, filtersMap, filterValue);
-                    String withTZ = makeApiCall(reportObj, YES, flowType);
-                    String WithoutTZ = makeApiCall(reportObj, NO, flowType);
+
+                    // WITH_TZ
+                    JSONObject withTzFiltersMap = getNormalMetricFiltersMap(withTZReportObj);
+                    withTzFiltersMap.put(OPERATOR, key);
+                    setMetricFiltersMap(withTZReportObj, withTzFiltersMap, filterValue);
+
+                    // WITHOUT_TZ
+                    JSONObject withoutTzFiltersMap = getNormalMetricFiltersMap(withoutTZReportObj);
+                    withoutTzFiltersMap.put(OPERATOR, key);
+                    setMetricFiltersMap(withoutTZReportObj, withoutTzFiltersMap, filterValue);
+
+                    String withTZ = makeApiCall(withTZReportObj, YES, flowType);
+                    String WithoutTZ = makeApiCall(withoutTZReportObj, NO, flowType);
                     listOfQueries.add(constructFinalMapForUnresolved(getMapWithQueries(new JSONObject(withTZ), new JSONObject(WithoutTZ)), TIMESTAMP_ONLY));
                     unresolvedTickets.put(key, listOfQueries);
                 }
@@ -199,9 +281,9 @@ public class Main {
         }
 
         if (!flowType.equals(UNRESOLVED_TICKETS)) {
-            writeJsonToFile("src/main/resources/output/output.json", new JSONObject(queries));
+            writeJsonToFile(OUTPUT_JSON, new JSONObject(queries));
         } else {
-            writeJsonToFile("src/main/resources/output/output.json", new JSONObject(unresolvedTickets));
+            writeJsonToFile(OUTPUT_JSON, new JSONObject(unresolvedTickets));
         }
     }
 
@@ -282,14 +364,14 @@ public class Main {
     }
 
     // this is to get the filtersMap from the Normal Metric
-    private static JSONObject getNormalMetricFiltersMap(JSONObject totalTickets) {
-        return totalTickets.getJSONArray(METRIC).getJSONObject(0).getJSONObject(NESTED_FILTER).getJSONObject(FILTERS_MAP).getJSONObject(ONE);
+    private static JSONObject getNormalMetricFiltersMap(JSONObject obj) {
+        return obj.getJSONArray(METRIC).getJSONObject(0).getJSONObject(NESTED_FILTER).getJSONObject(FILTERS_MAP).getJSONObject(ONE);
     }
 
     // this method is to set the normal metric filters map
-    private static JSONObject setNormalMetricFiltersMap(JSONObject totalTickets, JSONObject map, JSONObject value) {
+    private static void setMetricFiltersMap(JSONObject obj, JSONObject map, JSONObject value) {
         map.put(FILTER_VALUE, value);
-        return totalTickets.getJSONArray(METRIC).getJSONObject(0).getJSONObject(NESTED_FILTER).getJSONObject(FILTERS_MAP).put(ONE, map);
+        obj.getJSONArray(METRIC).getJSONObject(0).getJSONObject(NESTED_FILTER).getJSONObject(FILTERS_MAP).put(ONE, map);
     }
 
     // this is to create a map dynamically

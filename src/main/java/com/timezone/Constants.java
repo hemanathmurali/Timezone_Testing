@@ -10,24 +10,6 @@ public interface Constants {
     // app Name
     public static final String APP_NAME = "freshservice";
 
-    //stack url's
-    public static final String WITH_TIMEZONE_URL = "http://localhost:8080/";
-    public static final String WITHOUT_TIMEZONE_URL = "https://fv-prestaging.freshreports.com/";
-
-    // x-auth-token's
-    public static final String WITH_TIMEZONE_AUTH = "";
-    public static final String WITHOUT_TIMEZONE_AUTH = "";
-
-    // ReportGroup id's
-    // Normal metric
-    public static final String WITH_TIMEZONE_NORMAL_REPORTGROUP = "340862";
-    public static final String WITHOUT_TIMEZONE_NORMAL_REPORTGROUP = "373656";
-
-    // Report id's
-    // Normal metric
-    public static final String WITH_TIMEZONE_NORMAL_REPORT = "7306579";
-    public static final String WITHOUT_TIMEZONE_NORMAL_REPORT = "8095574";
-
 
     // other's
     public static final String KEYS = "keys";
@@ -63,6 +45,35 @@ public interface Constants {
     public static final String UNRESOLVED_TICKETS = "UNRESOLVED_TICKETS";
     public static final String TOTAL_QUERY = "TOTAL_QUERY";
     public static final String IMPROV_QUERY = "IMPROV_QUERY";
+
+
+    // path's
+    public static final String CONFIG_JSON = "src/main/resources/filter/filter_config.json";
+    public static final String FILTER_VALUES = "src/main/resources/filter/filter_values.json";
+    public static final String OUTPUT_JSON = "src/main/resources/output/output.json";
+
+    // reportGroup path's
+    public static final String WITH_TZ_REPORT_GROUP_OBJ = "src/main/resources/reportGroup/withTZ/total_ticket.json";
+    public static final String WITHOUT_TZ_REPORT_GROUP_OBJ ="src/main/resources/reportGroup/withoutTZ/total_ticket.json";
+
+
+    //stack url's
+    public static final String WITH_TIMEZONE_URL = "http://localhost:8080/";
+    public static final String WITHOUT_TIMEZONE_URL = "https://fv-prestaging.freshreports.com/";
+
+    // x-auth-token's
+    public static final String WITH_TIMEZONE_AUTH = "";
+    public static final String WITHOUT_TIMEZONE_AUTH = "";
+
+    // ReportGroup id's
+    // Normal metric
+    public static final String WITH_TIMEZONE_NORMAL_REPORTGROUP = "340862";
+    public static final String WITHOUT_TIMEZONE_NORMAL_REPORTGROUP = "373656";
+
+    // Report id's
+    // Normal metric
+    public static final String WITH_TIMEZONE_NORMAL_REPORT = "7306579";
+    public static final String WITHOUT_TIMEZONE_NORMAL_REPORT = "8095574";
 
     // final URL's
     public static final String WITH_TZ_URL = WITH_TIMEZONE_URL + "api/reportgroups/" + WITH_TIMEZONE_NORMAL_REPORTGROUP + "/reports/" + WITH_TIMEZONE_NORMAL_REPORT + "/modify?limit=100&offset=0&pageIndex=0";

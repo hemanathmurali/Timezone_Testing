@@ -1,0 +1,449 @@
+{
+  "applicationId": 1,
+  "title": "Untitled",
+  "groupBy": [],
+  "chartType": "text",
+  "meta": null,
+  "measureUnit": null,
+  "nestedFilter": {
+    "equation": "()",
+    "filtersMap": {},
+    "id": null
+  },
+  "nestedGroupFilter": null,
+  "metrics": [
+    {
+      "filters": [],
+      "function": "COUNT",
+      "isSelected": false,
+      "selectColumn": {
+        "id": 24976523,
+        "label": "Unresolved Tickets",
+        "dataType": "Long",
+        "attributeTypeValue": 8,
+        "measureUnit": null,
+        "resource": {
+          "id": 13,
+          "applicationId": 1,
+          "label": "Tickets",
+          "physicalResource": {
+            "id": 13,
+            "applicationId": null,
+            "createdDate": null,
+            "lastModifiedDate": null,
+            "name": "helpdesk_ticket",
+            "primaryKeys": null,
+            "uuid": null
+          },
+          "associationCount": 1,
+          "defaultDateAttribute": null,
+          "workspaceAttribute": null,
+          "improvementColor": null,
+          "moduleType": null,
+          "deletedCustomResource": false,
+          "custom": false
+        },
+        "resourceIds": null,
+        "association": null,
+        "unitType": null,
+        "fetchCustom": false,
+        "belongsTo": null,
+        "parentAttributeId": null,
+        "derivedFilterAttributes": [
+          {
+            "id": 24976522,
+            "label": "Time period",
+            "dataType": "Timestamp",
+            "attributeTypeValue": 3,
+            "measureUnit": null,
+            "resource": {
+              "id": 13,
+              "applicationId": 1,
+              "label": "Tickets",
+              "physicalResource": {
+                "id": 13,
+                "applicationId": null,
+                "createdDate": null,
+                "lastModifiedDate": null,
+                "name": "helpdesk_ticket",
+                "primaryKeys": null,
+                "uuid": null
+              },
+              "associationCount": 1,
+              "defaultDateAttribute": null,
+              "workspaceAttribute": null,
+              "improvementColor": null,
+              "moduleType": null,
+              "deletedCustomResource": false,
+              "custom": false
+            },
+            "resourceIds": null,
+            "association": null,
+            "unitType": null,
+            "fetchCustom": false,
+            "belongsTo": null,
+            "parentAttributeId": null,
+            "derivedFilterAttributes": null,
+            "type": "DIRECT",
+            "dependantAttributeIds": null,
+            "dependencyAttributeIds": null,
+            "defaultDateAttribute": null,
+            "isHistoricOrTimeSpent": false,
+            "formula": null,
+            "function": null,
+            "physicalAttribute": null,
+            "functions": null,
+            "functionsMap": null,
+            "description": null,
+            "isCustom": false,
+            "formatType": null,
+            "isShowDetails": false,
+            "applicationId": 1,
+            "dynamicFiltersSupported": null,
+            "idBased": false,
+            "belongsToWorkspace": null,
+            "belongsToIdentifier": null,
+            "userDefined": false,
+            "oneToManyCol": false,
+            "avgOfAvg": true,
+            "deletedCustomField": false,
+            "searchEnabled": false,
+            "filterMandatory": false,
+            "dependant": true,
+            "enumerated": false
+          }
+        ],
+        "type": "DERIVED",
+        "dependantAttributeIds": [
+          24976522
+        ],
+        "dependencyAttributeIds": null,
+        "defaultDateAttribute": {
+          "id": 24976522,
+          "label": "Time period",
+          "dataType": "Timestamp",
+          "attributeTypeValue": 3,
+          "measureUnit": null,
+          "resource": {
+            "id": 13,
+            "applicationId": 1,
+            "label": "Tickets",
+            "physicalResource": {
+              "id": 13,
+              "applicationId": null,
+              "createdDate": null,
+              "lastModifiedDate": null,
+              "name": "helpdesk_ticket",
+              "primaryKeys": null,
+              "uuid": null
+            },
+            "associationCount": 1,
+            "defaultDateAttribute": null,
+            "workspaceAttribute": null,
+            "improvementColor": null,
+            "moduleType": null,
+            "deletedCustomResource": false,
+            "custom": false
+          },
+          "resourceIds": null,
+          "association": null,
+          "unitType": null,
+          "fetchCustom": false,
+          "belongsTo": null,
+          "parentAttributeId": null,
+          "derivedFilterAttributes": null,
+          "type": "DIRECT",
+          "dependantAttributeIds": null,
+          "dependencyAttributeIds": null,
+          "defaultDateAttribute": null,
+          "isHistoricOrTimeSpent": false,
+          "formula": null,
+          "function": null,
+          "physicalAttribute": null,
+          "functions": null,
+          "functionsMap": null,
+          "description": null,
+          "isCustom": false,
+          "formatType": null,
+          "isShowDetails": false,
+          "applicationId": 1,
+          "dynamicFiltersSupported": null,
+          "idBased": false,
+          "belongsToWorkspace": null,
+          "belongsToIdentifier": null,
+          "userDefined": false,
+          "oneToManyCol": false,
+          "avgOfAvg": true,
+          "deletedCustomField": false,
+          "searchEnabled": false,
+          "filterMandatory": false,
+          "dependant": true,
+          "enumerated": false
+        },
+        "isHistoricOrTimeSpent": false,
+        "formula": null,
+        "function": null,
+        "physicalAttribute": null,
+        "functions": [
+          "COUNT",
+          "PERCENTAGE"
+        ],
+        "functionsMap": null,
+        "description": null,
+        "isCustom": false,
+        "formatType": null,
+        "isShowDetails": true,
+        "applicationId": 1,
+        "dynamicFiltersSupported": null,
+        "idBased": false,
+        "belongsToWorkspace": null,
+        "belongsToIdentifier": null,
+        "userDefined": false,
+        "oneToManyCol": false,
+        "avgOfAvg": true,
+        "deletedCustomField": false,
+        "searchEnabled": false,
+        "filterMandatory": true,
+        "dependant": false,
+        "enumerated": false
+      },
+      "isCollapse": true,
+      "nestedFilter": {
+        "equation": "(1)",
+        "filtersMap": {
+          "1": {
+            "attribute": {
+              "id": 24976522,
+              "fetchCustom": false,
+              "parentAttributeId": null,
+              "dataType": "Timestamp",
+              "label": "Time period",
+              "oneToManyCol": false,
+              "idBased": false,
+              "deletedCustomField": false,
+              "formatType": null,
+              "measureUnit": null,
+              "type": "DIRECT"
+            },
+            "idBased": false,
+            "belongsToIdentifier": null,
+            "operator": "$_VALUE",
+            "filterValue": "$_VALUE"
+          }
+        },
+        "id": null
+      },
+      "sortIndex": 1,
+      "id": 7446603,
+      "label": "Total Unresolved Tickets",
+      "defaultDateAttribute": {
+        "id": 24976522,
+        "label": "Time period",
+        "dataType": "Timestamp",
+        "attributeTypeValue": 3,
+        "measureUnit": null,
+        "resource": {
+          "id": 13,
+          "applicationId": 1,
+          "label": "Tickets",
+          "physicalResource": {
+            "id": 13,
+            "applicationId": null,
+            "createdDate": null,
+            "lastModifiedDate": null,
+            "name": "helpdesk_ticket",
+            "primaryKeys": null,
+            "uuid": null
+          },
+          "associationCount": 1,
+          "defaultDateAttribute": null,
+          "workspaceAttribute": null,
+          "improvementColor": null,
+          "moduleType": null,
+          "deletedCustomResource": false,
+          "custom": false
+        },
+        "resourceIds": null,
+        "association": null,
+        "unitType": null,
+        "fetchCustom": false,
+        "belongsTo": null,
+        "parentAttributeId": null,
+        "derivedFilterAttributes": null,
+        "type": "DIRECT",
+        "dependantAttributeIds": null,
+        "dependencyAttributeIds": null,
+        "defaultDateAttribute": null,
+        "isHistoricOrTimeSpent": false,
+        "formula": null,
+        "function": null,
+        "physicalAttribute": null,
+        "functions": null,
+        "functionsMap": null,
+        "description": null,
+        "isCustom": false,
+        "formatType": null,
+        "isShowDetails": false,
+        "applicationId": 1,
+        "dynamicFiltersSupported": null,
+        "idBased": false,
+        "belongsToWorkspace": null,
+        "belongsToIdentifier": null,
+        "userDefined": false,
+        "oneToManyCol": false,
+        "avgOfAvg": true,
+        "deletedCustomField": false,
+        "searchEnabled": false,
+        "filterMandatory": false,
+        "dependant": true,
+        "enumerated": false
+      },
+      "resource": {
+        "id": 13,
+        "applicationId": 1,
+        "label": "Tickets",
+        "physicalResource": {
+          "id": 13,
+          "applicationId": null,
+          "createdDate": null,
+          "lastModifiedDate": null,
+          "name": "helpdesk_ticket",
+          "primaryKeys": null,
+          "uuid": null
+        },
+        "associationCount": 1,
+        "defaultDateAttribute": null,
+        "workspaceAttribute": null,
+        "improvementColor": null,
+        "moduleType": null,
+        "deletedCustomResource": false,
+        "custom": false
+      },
+      "configs": [],
+      "source": {
+        "id": 34100,
+        "applicationId": 1,
+        "tenantId": 100000660,
+        "portalUrl": null,
+        "exportScheduleLimit": null,
+        "orgId": null,
+        "signupDate": 1622138043,
+        "timezone": "Asia/Kolkata",
+        "subTenants": null,
+        "fupType": null,
+        "name": "freshservice",
+        "label": "Freshservice",
+        "active": true
+      },
+      "uniqueMetricId": 1,
+      "workspaceFilter": null,
+      "applicationId": 1
+    }
+  ],
+  "resource": {
+    "id": 13,
+    "applicationId": 1,
+    "label": "Tickets",
+    "physicalResource": {
+      "id": 13,
+      "applicationId": null,
+      "createdDate": null,
+      "lastModifiedDate": null,
+      "name": "helpdesk_ticket",
+      "primaryKeys": null,
+      "uuid": null
+    },
+    "associationCount": 1,
+    "defaultDateAttribute": null,
+    "workspaceAttribute": null,
+    "improvementColor": null,
+    "moduleType": null,
+    "deletedCustomResource": false,
+    "custom": false
+  },
+  "id": 7306579,
+  "sortType": null,
+  "sortLimit": 0,
+  "sortConfiguration": null,
+  "applyDateRangeDimension": true,
+  "schedule": null,
+  "emptyWidget": false,
+  "styling": {
+    "chart": {
+      "settings": {
+        "matrix": {
+          "total": {
+            "row": {
+              "subTotal": true,
+              "grandTotal": true
+            },
+            "column": {
+              "subTotal": true,
+              "grandTotal": true
+            }
+          }
+        },
+        "sheet_table": {
+          "total": {
+            "row": {
+              "subTotal": true,
+              "grandTotal": true
+            }
+          },
+          "collapse": true
+        }
+      }
+    },
+    "header": {
+      "color": "rgba(17, 19, 21, 1)"
+    },
+    "widget": {
+      "border": "ALL",
+      "bgColor": "rgba(255, 255, 255, 1)",
+      "opacity": 100,
+      "borderColor": "rgba(230, 232, 235, 1)",
+      "borderRadius": "4",
+      "borderWeight": "1"
+    },
+    "padding": {
+      "top": "0",
+      "left": "0",
+      "right": "0",
+      "bottom": "0"
+    },
+    "showHeader": true
+  },
+  "interactiveConfig": [],
+  "description": {
+    "blocks": [],
+    "entityMap": {}
+  },
+  "applyModifiedData": true,
+  "associatedGroups": [
+    {
+      "id": 340862,
+      "name": "Timezone_Testing",
+      "createdBy": "",
+      "lastModifiedBy": null,
+      "createdDate": null,
+      "lastUpdated": null,
+      "originalName": "Timezone_Testing",
+      "uuid": null,
+      "curated": false
+    }
+  ],
+  "modified": true,
+  "isConfigsModified": false,
+  "nestedPageFilter": {
+    "id": null,
+    "requestResource": null,
+    "resource": null,
+    "filtersMap": {},
+    "equation": "()",
+    "nestedFilterModule": null,
+    "updatable": true,
+    "empty": true
+  },
+  "type": "CUSTOMIZED",
+  "confidenceInterval": null
+}
