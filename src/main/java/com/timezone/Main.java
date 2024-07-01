@@ -69,7 +69,7 @@ public class Main {
                         JSONObject withoutTzFiltersMap = getNormalMetricFiltersMap(withoutTZReportObj);
                         withoutTzFiltersMap.put(OPERATOR, key);
                         withoutTzFiltersMap.put(FILTER_VALUE, filterValue);
-                        setMetricFiltersMap(withoutTzFiltersMap, withoutTzFiltersMap, filterValue);
+                        setMetricFiltersMap(withoutTZReportObj, withoutTzFiltersMap, filterValue);
 
                         String withTZ = makeApiCall(withTZReportObj, YES, flowType);
                         String WithoutTZ = makeApiCall(withoutTZReportObj, NO, flowType);
@@ -96,7 +96,7 @@ public class Main {
 
                     String withTZ = makeApiCall(withTZReportObj, YES, flowType);
                     String WithoutTZ = makeApiCall(withoutTZReportObj, NO, flowType);
-                    listOfQueries.add(constructFinalMap(getMapWithQueries(withTZ, WithoutTZ), operators.toString()));
+                    listOfQueries.add(constructFinalMap(getMapWithQueries(withTZ, WithoutTZ), TIMESTAMP_ONLY));
                     queries.put(key, listOfQueries);
                 }
 
@@ -199,7 +199,7 @@ public class Main {
                         JSONObject withoutTzFiltersMap = getNormalMetricFiltersMap(withoutTZReportObj);
                         withoutTzFiltersMap.put(OPERATOR, key);
                         withoutTzFiltersMap.put(FILTER_VALUE, filterValue);
-                        setMetricFiltersMap(withoutTzFiltersMap, withoutTzFiltersMap, filterValue);
+                        setMetricFiltersMap(withoutTZReportObj, withoutTzFiltersMap, filterValue);
 
                         String withTZ = makeApiCall(withTZReportObj, YES, flowType);
                         String WithoutTZ = makeApiCall(withoutTZReportObj, NO, flowType);
@@ -294,14 +294,9 @@ public class Main {
 
         if (opt.equals(YES)) {
             JSONObject tz = new JSONObject();
-            tz.put(VALUE, "America/New_York");
-            tz.put(ENABLED, true);
+            tz.put(VALUE, TIMEZONE_VALUE);
+            tz.put(ENABLED, TIMEZONE_ENABLED);
             obj.put(TIMEZONE, tz);
-        } else {
-
-            if (obj.getJSONObject(TIMEZONE) != null) {
-                obj.remove(TIMEZONE);
-            }
         }
 
         try {

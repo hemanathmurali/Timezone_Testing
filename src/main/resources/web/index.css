@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.root{
+    margin: 20px;
+
+}
+
+table {
+    margin: 2em auto;
+    text-align: center;
+}
+
+table,
+th,
+td {
+    border: 2px solid #000;
+    background-color: white;
+    border-collapse: collapse;
+    padding: 1em;
+}
+
+.justify{
+    text-align: left;
+}
