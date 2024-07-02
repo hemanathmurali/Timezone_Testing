@@ -5,7 +5,11 @@ let table_body = document.getElementById("table_body");
 const normalOperators = ["IS_ON", "DAY_IS", "IN_THE_LAST", "IN_THE_NEXT", "NOT_IN_THE_LAST", "NOT_IN_THE_NEXT", "AFTER", "BEFORE", "SINCE", "IS_BETWEEN"];
 const unresolvedOperators = ["IS_ON", "IN_THE_LAST", "IN_THE_NEXT", "SINCE", "IS_BETWEEN"];
 
-const flowType = "unresolvedTickets"
+// flowTypes
+const NORMAL = "NORMAL";
+const UNRESOLVED_TICKETS = "UNRESOLVED_TICKETS";
+
+const flowType = UNRESOLVED_TICKETS;
 
 
 function fetchJson() {
@@ -24,7 +28,7 @@ function fetchJson() {
 
 function renderTable(data, keys) {
 
-    if (flowType == "normal") {
+    if (flowType == NORMAL) {
         const header = `<tr>
             <th>OPERATOR</th>
             <th>UNIT</th>
@@ -75,7 +79,7 @@ function renderTable(data, keys) {
 
         }
 
-    } else if (flowType == "unresolvedTickets") {
+    } else if (flowType == UNRESOLVED_TICKETS) {
 
         const header = `<tr>
             <th>OPERATOR</th>
