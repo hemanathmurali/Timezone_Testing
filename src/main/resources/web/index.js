@@ -22,7 +22,7 @@ function fetchJson() {
         .catch(error => console.error('Error fetching output JSON:', error));
 }
 
-function renderTable(data, keys){
+function renderTable(data, keys) {
 
     if (flowType == "normal") {
         const header = `<tr>
@@ -123,7 +123,7 @@ function renderTable(data, keys){
                     if (diff.added === true) {
                         newTextImprov += `<span style="color:green"><b>${diff.value}</b></span>`;
                     } else if (diff.removed === true) {
-                        oldTextImprov += `<span style="color:red">${diff.value}</span>`;
+                        oldTextImprov += `<span style="color:red"><b>${diff.value}</b></span>`;
                     } else {
                         newTextImprov += `<span>${diff.value}</span>`;
                         oldTextImprov += `<span>${diff.value}</span>`;
@@ -134,18 +134,22 @@ function renderTable(data, keys){
                <td>${unresolvedOperators[i]}</td>  
                <td>${operators[j]}</td>
                 <td class="justify">
-               <b>Total Query:</b>
+               <h3>Total Query:</h3>
                <p>${oldTextTotal}</p>
+                <pre>
 
-               <b>Improv Query:</b>
+                </pre>
+               <h3>Improv Query:</h3>
                <p>${oldTextImprov}</p>
                </td>
                <td class="justify">
-               <b>Total Query:</b>
+               <h3>Total Query:</h3>
                <p>${newTextTotal}</p>
-
-               <b>Improv Query:</b>
-               <p>${oldTextImprov}</p>
+                <pre>
+                
+                </pre>
+               <h3>Improv Query:</h3>
+               <p>${newTextImprov}</p>
                </td>
               
                </tr>`
