@@ -292,12 +292,12 @@ public class Main {
 
         HttpClient client = HttpClient.newHttpClient();
 
-        if (opt.equals(YES)) {
-            JSONObject tz = new JSONObject();
-            tz.put(VALUE, TIMEZONE_VALUE);
-            tz.put(ENABLED, TIMEZONE_ENABLED);
-            obj.put(TIMEZONE, tz);
-        }
+//        if (opt.equals(YES)) {
+//            JSONObject tz = new JSONObject();
+//            tz.put(VALUE, TIMEZONE_VALUE);
+//            tz.put(ENABLED, TIMEZONE_ENABLED);
+//            obj.put(TIMEZONE, tz);
+//        }
 
         try {
             HttpRequest patchRequest = HttpRequest.newBuilder().

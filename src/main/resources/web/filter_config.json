@@ -10,7 +10,11 @@
       "THIS_QUARTER",
       "LAST_QUARTER",
       "THIS_YEAR",
-      "LAST_YEAR"
+      "LAST_YEAR",
+      "NEXT_WEEK",
+      "NEXT_MONTH",
+      "NEXT_QUARTER",
+      "NEXT_YEAR"
     ],
     "config": {
       "type": "DATEDURATION",

@@ -1,254 +1,199 @@
 {
-    "applicationId": 1,
-    "title": "Untitled",
-    "groupBy": [],
-    "chartType": "text",
-    "meta": null,
-    "measureUnit": null,
-    "nestedFilter": {
-      "equation": "()",
-      "filtersMap": {},
-      "id": null
-    },
-    "nestedGroupFilter": {
-      "id": null,
-      "requestResource": null,
-      "resource": null,
-      "filtersMap": {},
-      "equation": "()",
-      "nestedFilterModule": null,
-      "updatable": true,
-      "empty": true
-    },
-    "metrics": [
-      {
-        "filters": [],
-        "function": "COUNT",
-        "selectColumn": {
-          "id": null,
-          "label": "Tickets",
-          "dataType": null,
-          "attributeTypeValue": 15,
-          "measureUnit": null,
-          "resource": null,
-          "resourceIds": null,
-          "association": null,
-          "unitType": null,
-          "fetchCustom": false,
-          "belongsTo": null,
-          "parentAttributeId": null,
-          "derivedFilterAttributes": null,
-          "type": null,
-          "dependantAttributeIds": null,
-          "dependencyAttributeIds": null,
-          "defaultDateAttribute": null,
-          "isHistoricOrTimeSpent": false,
-          "formula": null,
-          "function": null,
-          "physicalAttribute": null,
-          "functions": [
-            "AVG",
-            "MAX",
-            "MIN",
-            "SUM",
-            "MEDIAN",
-            "PERCENTILE",
-            "CORRELATION",
-            "VARIANCE_SAMPLE",
-            "VARIANCE",
-            "COVARIANCE_SAMPLE",
-            "COVARIANCE",
-            "COUNT_ALL",
-            "COUNT_DISTINCT",
-            "COUNT_BLANKS",
-            "COUNT_NON_BLANKS",
-            "STDDEV_POP",
-            "STDDEV_SAMP",
-            "MODE"
-          ],
-          "functionsMap": null,
-          "description": null,
-          "isCustom": false,
-          "formatType": null,
-          "isShowDetails": false,
-          "applicationId": null,
-          "dynamicFiltersSupported": null,
-          "idBased": false,
-          "belongsToWorkspace": null,
-          "belongsToIdentifier": null,
-          "avgOfAvg": true,
-          "dependant": false,
-          "enumerated": false,
-          "filterMandatory": false,
-          "searchEnabled": false,
-          "userDefined": false,
-          "deletedCustomField": false,
-          "oneToManyCol": false
-        },
-        "isCollapse": true,
-        "nestedFilter": {
-          "equation": "(1)",
-          "filtersMap": {
-            "1": {
-              "attribute": {
-                "id": 311,
-                "fetchCustom": false,
-                "parentAttributeId": null,
-                "dataType": "Timestamp",
-                "label": "Created Date",
-                "oneToManyCol": false,
-                "idBased": false,
-                "deletedCustomField": false,
-                "formatType": null,
-                "measureUnit": null,
-                "type": "DIRECT"
-              },
+  "applicationId": 1,
+  "title": "Untitled",
+  "groupBy": [],
+  "chartType": "text",
+  "meta": null,
+  "measureUnit": null,
+  "nestedFilter": {
+    "equation": "()",
+    "filtersMap": {},
+    "id": null
+  },
+  "nestedGroupFilter": null,
+  "metrics": [
+    {
+      "filters": [],
+      "function": "COUNT",
+      "isSelected": false,
+      "selectColumn": null,
+      "isCollapse": true,
+      "nestedFilter": {
+        "equation": "(1)",
+        "filtersMap": {
+          "1": {
+            "attribute": {
+              "id": 311,
+              "fetchCustom": false,
+              "parentAttributeId": null,
+              "dataType": "Timestamp",
+              "label": "Created Date",
+              "oneToManyCol": false,
               "idBased": false,
-              "belongsToIdentifier": null,
-              "operator": "$_VALUE",
-              "filterValue": "$_VALUE"
-            }
-          },
-          "id": null
-        },
-        "sortIndex": 1,
-        "id": null,
-        "label": "Total Tickets",
-        "defaultDateAttribute": null,
-        "resource": {
-          "id": 13,
-          "applicationId": 1,
-          "label": "Tickets",
-          "physicalResource": {
-            "id": 13,
-            "applicationId": null,
-            "createdDate": null,
-            "lastModifiedDate": null,
-            "name": "helpdesk_ticket",
-            "primaryKeys": null,
-            "uuid": null
-          },
-          "associationCount": 1,
-          "defaultDateAttribute": null,
-          "workspaceAttribute": null,
-          "improvementColor": null,
-          "moduleType": null,
-          "custom": false,
-          "deletedCustomResource": false
-        },
-        "configs": [],
-        "source": {
-          "id": 34100,
-          "applicationId": 1,
-          "tenantId": 100000660,
-          "portalUrl": null,
-          "exportScheduleLimit": null,
-          "orgId": null,
-          "signupDate": 1622138043,
-          "timezone": "Asia/Kolkata",
-          "subTenants": null,
-          "fupType": null,
-          "name": "freshservice",
-          "label": "Freshservice",
-          "active": true
-        },
-        "uniqueMetricId": 1,
-        "workspaceFilter": null,
-        "applicationId": 1
-      }
-    ],
-    "resource": {
-      "id": 13,
-      "applicationId": 1,
-      "label": "Tickets",
-      "physicalResource": {
-        "id": 13,
-        "applicationId": null,
-        "createdDate": null,
-        "lastModifiedDate": null,
-        "name": "helpdesk_ticket",
-        "primaryKeys": null,
-        "uuid": null
-      },
-      "associationCount": 1,
-      "defaultDateAttribute": null,
-      "workspaceAttribute": null,
-      "improvementColor": null,
-      "moduleType": null,
-      "custom": false,
-      "deletedCustomResource": false
-    },
-    "id": 7306578,
-    "sortType": null,
-    "sortLimit": 0,
-    "sortConfiguration": null,
-    "applyDateRangeDimension": true,
-    "schedule": null,
-    "emptyWidget": false,
-    "styling": {
-      "widget": {
-        "border": "ALL",
-        "opacity": 100,
-        "borderRadius": "4",
-        "borderWeight": "1",
-        "borderColor": "rgba(230, 232, 235, 1)",
-        "bgColor": "rgba(255, 255, 255, 1)"
-      },
-      "padding": {
-        "top": "0",
-        "left": "0",
-        "right": "0",
-        "bottom": "0"
-      },
-      "showHeader": true,
-      "header": {
-        "color": "rgba(17, 19, 21, 1)"
-      },
-      "chart": {
-        "settings": {
-          "matrix": {
-            "total": {
-              "row": {
-                "subTotal": true,
-                "grandTotal": true
-              },
-              "column": {
-                "subTotal": true,
-                "grandTotal": true
-              }
-            }
-          },
-          "sheet_table": {
-            "total": {
-              "row": {
-                "subTotal": true,
-                "grandTotal": true
-              }
+              "deletedCustomField": false,
+              "formatType": null,
+              "measureUnit": null,
+              "type": "DIRECT"
             },
-            "collapse": true
+            "idBased": false,
+            "belongsToIdentifier": null,
+            "operator": "$_VALUE",
+            "filterValue": "$_VALUE"
           }
+        },
+        "id": 28201697
+      },
+      "sortIndex": 1,
+      "id": 8686714,
+      "label": "Total Tickets",
+      "defaultDateAttribute": null,
+      "resource": {
+        "id": 13,
+        "applicationId": 1,
+        "label": "Tickets",
+        "physicalResource": {
+          "id": 13,
+          "applicationId": null,
+          "createdDate": null,
+          "lastModifiedDate": null,
+          "name": "helpdesk_ticket",
+          "primaryKeys": null,
+          "uuid": null
+        },
+        "associationCount": 1,
+        "defaultDateAttribute": null,
+        "workspaceAttribute": null,
+        "improvementColor": "RED",
+        "moduleType": null,
+        "custom": false,
+        "deletedCustomResource": false
+      },
+      "configs": [],
+      "source": {
+        "id": 34100,
+        "applicationId": 1,
+        "tenantId": 100000660,
+        "portalUrl": null,
+        "exportScheduleLimit": null,
+        "orgId": null,
+        "signupDate": 1622138043,
+        "timezone": "Asia/Kolkata",
+        "subTenants": null,
+        "fupType": null,
+        "exemptionPeriodDates": null,
+        "name": "freshservice",
+        "label": "Freshservice",
+        "active": true
+      },
+      "uniqueMetricId": 1,
+      "workspaceFilter": null,
+      "applicationId": 1
+    }
+  ],
+  "resource": {
+    "id": 13,
+    "applicationId": 1,
+    "label": "Tickets",
+    "physicalResource": {
+      "id": 13,
+      "applicationId": null,
+      "createdDate": null,
+      "lastModifiedDate": null,
+      "name": "helpdesk_ticket",
+      "primaryKeys": null,
+      "uuid": null
+    },
+    "associationCount": 1,
+    "defaultDateAttribute": null,
+    "workspaceAttribute": null,
+    "improvementColor": "RED",
+    "moduleType": null,
+    "custom": false,
+    "deletedCustomResource": false
+  },
+  "id": 8571774,
+  "sortType": null,
+  "sortLimit": 0,
+  "sortConfiguration": null,
+  "applyDateRangeDimension": false,
+  "schedule": null,
+  "emptyWidget": false,
+  "styling": {
+    "chart": {
+      "settings": {
+        "matrix": {
+          "total": {
+            "row": {
+              "subTotal": true,
+              "grandTotal": true
+            },
+            "column": {
+              "subTotal": true,
+              "grandTotal": true
+            }
+          }
+        },
+        "sheet_table": {
+          "total": {
+            "row": {
+              "subTotal": true,
+              "grandTotal": true
+            }
+          },
+          "collapse": true
         }
       }
     },
-    "interactiveConfig": [],
-    "description": {
-      "blocks": [],
-      "entityMap": {}
+    "header": {
+      "color": "rgba(17, 19, 21, 1)"
     },
-    "applyModifiedData": true,
-    "associatedGroups": null,
-    "modified": true,
-    "isConfigsModified": false,
-    "nestedPageFilter": {
-      "id": null,
-      "requestResource": null,
-      "resource": null,
-      "filtersMap": {},
-      "equation": "()",
-      "nestedFilterModule": null,
-      "updatable": true,
-      "empty": true
+    "widget": {
+      "border": "ALL",
+      "bgColor": "rgba(255, 255, 255, 1)",
+      "opacity": 100,
+      "borderColor": "rgba(230, 232, 235, 1)",
+      "borderRadius": "4",
+      "borderWeight": "1"
     },
-    "type": "CUSTOMIZED",
-    "confidenceInterval": null
-  }
+    "padding": {
+      "top": "0",
+      "left": "0",
+      "right": "0",
+      "bottom": "0"
+    },
+    "showHeader": true
+  },
+  "interactiveConfig": [],
+  "description": {
+    "blocks": [],
+    "entityMap": {}
+  },
+  "applyModifiedData": true,
+  "associatedGroups": [
+    {
+      "id": 381045,
+      "name": "Timezone_Testing",
+      "createdBy": "",
+      "lastModifiedBy": null,
+      "createdDate": null,
+      "lastUpdated": null,
+      "originalName": "Timezone_Testing",
+      "uuid": null,
+      "curated": false
+    }
+  ],
+  "modified": false,
+  "isConfigsModified": false,
+  "nestedPageFilter": {
+    "id": null,
+    "requestResource": null,
+    "resource": null,
+    "filtersMap": {},
+    "equation": "()",
+    "nestedFilterModule": null,
+    "updatable": true,
+    "empty": true
+  },
+  "type": "CUSTOMIZED",
+  "confidenceInterval": null
+}

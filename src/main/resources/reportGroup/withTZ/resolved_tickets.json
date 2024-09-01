@@ -1,6 +1,6 @@
 {
   "applicationId": 1,
-  "title": "Untitled",
+  "title": "Resolved_tickets",
   "groupBy": [],
   "chartType": "text",
   "meta": null,
@@ -15,12 +15,11 @@
     {
       "filters": [],
       "function": "COUNT",
-      "isSelected": false,
       "selectColumn": {
         "id": 22136118,
         "label": "Resolved Tickets",
         "dataType": "Integer",
-        "attributeTypeValue": 15,
+        "attributeTypeValue": 8,
         "measureUnit": null,
         "resource": {
           "id": 13,
@@ -67,18 +66,19 @@
         "isCustom": false,
         "formatType": null,
         "isShowDetails": true,
-        "applicationId": null,
+        "applicationId": 1,
         "dynamicFiltersSupported": null,
         "idBased": false,
         "belongsToWorkspace": null,
         "belongsToIdentifier": null,
+        "userDefined": false,
+        "searchEnabled": false,
+        "filterMandatory": false,
         "dependant": false,
         "enumerated": false,
-        "filterMandatory": false,
-        "searchEnabled": false,
-        "userDefined": false,
         "deletedCustomField": false,
         "oneToManyCol": false,
+        "virtualAttribute": false,
         "avgOfAvg": true
       },
       "isCollapse": true,
@@ -105,35 +105,12 @@
             "filterValue": "$_VALUE"
           }
         },
-        "id": null
+        "id": 25597584
       },
       "sortIndex": 1,
-      "id": 7446603,
+      "id": 8133873,
       "label": "Total Resolved Tickets",
-      "defaultDateAttribute": {
-        "id": 311,
-        "label": "Created Date",
-        "dataType": "Timestamp",
-        "type": "DIRECT",
-        "formula": null,
-        "resource": null,
-        "formulaJson": null,
-        "physicalAttribute": null,
-        "description": null,
-        "nestedFilter": null,
-        "selectedFunction": null,
-        "defaultDateAttributeId": null,
-        "formatType": null,
-        "resourceIds": null,
-        "applicationIds": null,
-        "resourceAttrPropMap": null,
-        "idBased": false,
-        "resourceId": null,
-        "measureUnit": null,
-        "showDetails": false,
-        "userDefined": false,
-        "deletedCustomField": false
-      },
+      "defaultDateAttribute": null,
       "resource": {
         "id": 13,
         "applicationId": 1,
@@ -167,6 +144,7 @@
         "timezone": "Asia/Kolkata",
         "subTenants": null,
         "fupType": null,
+        "exemptionPeriodDates": null,
         "name": "freshservice",
         "label": "Freshservice",
         "active": true
@@ -197,11 +175,11 @@
     "deletedCustomResource": false,
     "custom": false
   },
-  "id": 7306579,
+  "id": 8002511,
   "sortType": null,
   "sortLimit": 0,
   "sortConfiguration": null,
-  "applyDateRangeDimension": true,
+  "applyDateRangeDimension": false,
   "schedule": null,
   "emptyWidget": false,
   "styling": {
@@ -257,18 +235,18 @@
   "applyModifiedData": true,
   "associatedGroups": [
     {
-      "id": 340862,
-      "name": "Timezone_Testing",
+      "id": 362141,
+      "name": "Timezone_Report",
       "createdBy": "",
       "lastModifiedBy": null,
       "createdDate": null,
       "lastUpdated": null,
-      "originalName": "Timezone_Testing",
+      "originalName": "Timezone_Report",
       "uuid": null,
       "curated": false
     }
   ],
-  "modified": true,
+  "modified": false,
   "isConfigsModified": false,
   "nestedPageFilter": {
     "id": null,
@@ -281,5 +259,6 @@
     "empty": true
   },
   "type": "CUSTOMIZED",
-  "confidenceInterval": null
+  "confidenceInterval": null,
+  "timezone": null
 }

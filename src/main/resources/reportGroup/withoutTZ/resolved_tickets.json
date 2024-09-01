@@ -1,6 +1,6 @@
 {
   "applicationId": 1,
-  "title": "Untitled",
+  "title": "Resolved_tickets",
   "groupBy": [],
   "chartType": "text",
   "meta": null,
@@ -20,7 +20,7 @@
         "id": 22136118,
         "label": "Resolved Tickets",
         "dataType": "Integer",
-        "attributeTypeValue": 15,
+        "attributeTypeValue": 8,
         "measureUnit": null,
         "resource": {
           "id": 13,
@@ -38,10 +38,10 @@
           "associationCount": 1,
           "defaultDateAttribute": null,
           "workspaceAttribute": null,
-          "improvementColor": null,
+          "improvementColor": "RED",
           "moduleType": null,
-          "deletedCustomResource": false,
-          "custom": false
+          "custom": false,
+          "deletedCustomResource": false
         },
         "resourceIds": null,
         "association": null,
@@ -67,19 +67,20 @@
         "isCustom": false,
         "formatType": null,
         "isShowDetails": true,
-        "applicationId": null,
+        "applicationId": 1,
         "dynamicFiltersSupported": null,
         "idBased": false,
         "belongsToWorkspace": null,
         "belongsToIdentifier": null,
-        "dependant": false,
-        "enumerated": false,
-        "filterMandatory": false,
-        "searchEnabled": false,
         "userDefined": false,
-        "deletedCustomField": false,
         "oneToManyCol": false,
-        "avgOfAvg": true
+        "avgOfAvg": true,
+        "virtualAttribute": false,
+        "dependant": false,
+        "searchEnabled": false,
+        "deletedCustomField": false,
+        "enumerated": false,
+        "filterMandatory": false
       },
       "isCollapse": true,
       "nestedFilter": {
@@ -105,35 +106,12 @@
             "filterValue": "$_VALUE"
           }
         },
-        "id": null
+        "id": 28201701
       },
       "sortIndex": 1,
-      "id": 7446603,
+      "id": 8686715,
       "label": "Total Resolved Tickets",
-      "defaultDateAttribute": {
-        "id": 311,
-        "label": "Created Date",
-        "dataType": "Timestamp",
-        "type": "DIRECT",
-        "formula": null,
-        "resource": null,
-        "formulaJson": null,
-        "physicalAttribute": null,
-        "description": null,
-        "nestedFilter": null,
-        "selectedFunction": null,
-        "defaultDateAttributeId": null,
-        "formatType": null,
-        "resourceIds": null,
-        "applicationIds": null,
-        "resourceAttrPropMap": null,
-        "idBased": false,
-        "resourceId": null,
-        "measureUnit": null,
-        "showDetails": false,
-        "userDefined": false,
-        "deletedCustomField": false
-      },
+      "defaultDateAttribute": null,
       "resource": {
         "id": 13,
         "applicationId": 1,
@@ -150,10 +128,10 @@
         "associationCount": 1,
         "defaultDateAttribute": null,
         "workspaceAttribute": null,
-        "improvementColor": null,
+        "improvementColor": "RED",
         "moduleType": null,
-        "deletedCustomResource": false,
-        "custom": false
+        "custom": false,
+        "deletedCustomResource": false
       },
       "configs": [],
       "source": {
@@ -167,6 +145,7 @@
         "timezone": "Asia/Kolkata",
         "subTenants": null,
         "fupType": null,
+        "exemptionPeriodDates": null,
         "name": "freshservice",
         "label": "Freshservice",
         "active": true
@@ -192,16 +171,16 @@
     "associationCount": 1,
     "defaultDateAttribute": null,
     "workspaceAttribute": null,
-    "improvementColor": null,
+    "improvementColor": "RED",
     "moduleType": null,
-    "deletedCustomResource": false,
-    "custom": false
+    "custom": false,
+    "deletedCustomResource": false
   },
-  "id": 7306579,
+  "id": 8571778,
   "sortType": null,
   "sortLimit": 0,
   "sortConfiguration": null,
-  "applyDateRangeDimension": true,
+  "applyDateRangeDimension": false,
   "schedule": null,
   "emptyWidget": false,
   "styling": {
@@ -257,7 +236,7 @@
   "applyModifiedData": true,
   "associatedGroups": [
     {
-      "id": 340862,
+      "id": 381045,
       "name": "Timezone_Testing",
       "createdBy": "",
       "lastModifiedBy": null,
@@ -268,7 +247,7 @@
       "curated": false
     }
   ],
-  "modified": true,
+  "modified": false,
   "isConfigsModified": false,
   "nestedPageFilter": {
     "id": null,

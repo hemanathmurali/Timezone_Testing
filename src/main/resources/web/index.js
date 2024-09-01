@@ -6,14 +6,20 @@ const normalOperators = ["IS_ON", "DAY_IS", "IN_THE_LAST", "IN_THE_NEXT", "NOT_I
 const unresolvedOperators = ["IS_ON", "IN_THE_LAST", "IN_THE_NEXT", "SINCE", "IS_BETWEEN"];
 
 // flowTypes
+
 const NORMAL = "NORMAL";
+const RESOLVED_TICKETS = "RESOLVED_TICKETS";
 const UNRESOLVED_TICKETS = "UNRESOLVED_TICKETS";
 
 const flowType = UNRESOLVED_TICKETS;
 
 
+
 function fetchJson() {
-    fetch('./output.json')
+
+    let output = './' + flowType+"_output.json";
+
+    fetch(output)
         .then(response => response.json())
         .then(data => {
             fetch('./filter_config.json')
@@ -28,7 +34,7 @@ function fetchJson() {
 
 function renderTable(data, keys) {
 
-    if (flowType == NORMAL) {
+    if (flowType == NORMAL || flowType == RESOLVED_TICKETS) {
         const header = `<tr>
             <th>OPERATOR</th>
             <th>UNIT</th>
